@@ -42,20 +42,20 @@ public final class Guide {
         "TOOL_SHOVEL_DUMMY",
         Material.STONE_SHOVEL,
         ThemeItemType.TOOL,
-        "匠魂铲",
-        ThemeUtils.PASSIVE + "由手柄,绑定结,铲头三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂工具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位"
+        "匠魂鏟",
+        ThemeUtils.PASSIVE + "由手把,綁定結,剷頭三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂工具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位"
     );
 
     public static final SlimefunItemStack TOOL_PICKAXE_DUMMY = ThemeUtils.themedItemStack(
         "TOOL_PICKAXE_DUMMY",
         Material.STONE_PICKAXE,
         ThemeItemType.TOOL,
-        "匠魂镐",
-        ThemeUtils.PASSIVE + "由手柄,绑定结,镐头三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂工具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位"
+        "匠魂鎬",
+        ThemeUtils.PASSIVE + "由手把,綁定結,鎬頭三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂工具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位"
     );
 
     public static final SlimefunItemStack TOOL_AXE_DUMMY = ThemeUtils.themedItemStack(
@@ -63,41 +63,41 @@ public final class Guide {
         Material.STONE_AXE,
         ThemeItemType.TOOL,
         "匠魂斧",
-        ThemeUtils.PASSIVE + "由手柄,绑定结,斧刃三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂工具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位"
+        ThemeUtils.PASSIVE + "由手把,綁定結,斧刃三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂工具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位"
     );
 
     public static final SlimefunItemStack TOOL_HOE_DUMMY = ThemeUtils.themedItemStack(
         "TOOL_HOE_DUMMY",
         Material.STONE_HOE,
         ThemeItemType.TOOL,
-        "匠魂锄",
-        ThemeUtils.PASSIVE + "由手柄,绑定结,锄头三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂工具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位"
+        "匠魂鋤",
+        ThemeUtils.PASSIVE + "由手把,綁定結,鋤頭三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂工具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位"
     );
 
     public static final SlimefunItemStack TOOL_SWORD_DUMMY = ThemeUtils.themedItemStack(
         "TOOL_SWORD_DUMMY",
         Material.STONE_SWORD,
         ThemeItemType.TOOL,
-        "匠魂剑",
-        ThemeUtils.PASSIVE + "由手柄,绑定结,剑刃三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂武器根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位"
+        "匠魂劍",
+        ThemeUtils.PASSIVE + "由手把,綁定結,劍刃三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂武器根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位"
     );
 
     public static final SlimefunItemStack ARMOUR_HELMET_DUMMY = ThemeUtils.themedItemStack(
         "ARMOUR_HELMET_DUMMY",
         Material.LEATHER_HELMET,
         ThemeItemType.ARMOUR,
-        "匠魂头盔",
-        ThemeUtils.PASSIVE + "由头盔板,护身软甲,盔甲接合物三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂防具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位与额外属性",
-        ThemeUtils.PASSIVE + "会在损坏后自动卸下至物品栏中",
-        ThemeUtils.WARNING + "如果物品栏没有空间则会掉到地上"
+        "匠魂頭盔",
+        ThemeUtils.PASSIVE + "由頭盔板,護身軟甲,盔甲接合物三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂防具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位與額外屬性",
+        ThemeUtils.PASSIVE + "會在損壞後自動卸下至物品欄中",
+        ThemeUtils.WARNING + "如果物品欄沒有空間則會掉到地上"
     );
 
     public static final SlimefunItemStack ARMOUR_CHESTPLATE_DUMMY = ThemeUtils.themedItemStack(
@@ -105,23 +105,23 @@ public final class Guide {
         Material.LEATHER_CHESTPLATE,
         ThemeItemType.ARMOUR,
         "匠魂胸甲",
-        ThemeUtils.PASSIVE + "由胸甲板,护身软甲,盔甲接合物三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂防具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位与额外属性",
-        ThemeUtils.PASSIVE + "会在损坏后自动卸下至物品栏中",
-        ThemeUtils.WARNING + "如果物品栏没有空间则会掉到地上"
+        ThemeUtils.PASSIVE + "由胸甲板,護身軟甲,盔甲接合物三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂防具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位與額外屬性",
+        ThemeUtils.PASSIVE + "會在損壞後自動卸下至物品欄中",
+        ThemeUtils.WARNING + "如果物品欄沒有空間則會掉到地上"
     );
 
     public static final SlimefunItemStack ARMOUR_LEGGINGS_DUMMY = ThemeUtils.themedItemStack(
         "ARMOUR_LEGGINGS_DUMMY",
         Material.LEATHER_LEGGINGS,
         ThemeItemType.ARMOUR,
-        "匠魂护腿",
-        ThemeUtils.PASSIVE + "由护腿板,护身软甲,盔甲接合物三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂防具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位与额外属性",
-        ThemeUtils.PASSIVE + "会在损坏后自动卸下至物品栏中",
-        ThemeUtils.WARNING + "如果物品栏没有空间则会掉到地上"
+        "匠魂護腿",
+        ThemeUtils.PASSIVE + "由護腿板,護身軟甲,盔甲接合物三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂防具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位與額外屬性",
+        ThemeUtils.PASSIVE + "會在損壞後自動卸下至物品欄中",
+        ThemeUtils.WARNING + "如果物品欄沒有空間則會掉到地上"
     );
 
     public static final SlimefunItemStack ARMOUR_BOOTS_DUMMY = ThemeUtils.themedItemStack(
@@ -129,11 +129,11 @@ public final class Guide {
         Material.LEATHER_BOOTS,
         ThemeItemType.ARMOUR,
         "匠魂靴子",
-        ThemeUtils.PASSIVE + "由靴子板,护身软甲,盔甲接合物三个部件组成",
-        ThemeUtils.PASSIVE + "匠魂防具根据不同部件的材质拥有不同属性",
-        ThemeUtils.PASSIVE + "升级后还能获得模组栏位与额外属性",
-        ThemeUtils.PASSIVE + "会在损坏后自动卸下至物品栏中",
-        ThemeUtils.WARNING + "如果物品栏没有空间则会掉到地上"
+        ThemeUtils.PASSIVE + "由靴子板,護身軟甲,盔甲接合物三個部件組成",
+        ThemeUtils.PASSIVE + "匠魂防具根據不同部件的材質擁有不同屬性",
+        ThemeUtils.PASSIVE + "升級後還能獲得模組欄位與額外屬性",
+        ThemeUtils.PASSIVE + "會在損壞後自動卸下至物品欄中",
+        ThemeUtils.WARNING + "如果物品欄沒有空間則會掉到地上"
     );
 
     public static final SlimefunItemStack TOOL_AXE = ThemeUtils.themedItemStack(
@@ -252,24 +252,24 @@ public final class Guide {
         "TOOL_INFO",
         SkullTextures.INFO,
         ThemeItemType.INFO,
-        "匠魂工具信息",
-        ThemeUtils.PASSIVE + "匠魂的工具或武器在使用时",
-        ThemeUtils.PASSIVE + "会获得熟练度经验",
-        ThemeUtils.PASSIVE + "积累一定经验可以获得升级",
-        ThemeUtils.PASSIVE + "每次升级后可以获得1个模组栏位",
-        ThemeUtils.PASSIVE + "品质依次为: 石 > 金 > 铁 > 钻石 > 下界合金"
+        "匠魂工具訊息",
+        ThemeUtils.PASSIVE + "匠魂的工具或武器在使用時",
+        ThemeUtils.PASSIVE + "會獲得熟練度經驗",
+        ThemeUtils.PASSIVE + "積累一定經驗可以獲得升級",
+        ThemeUtils.PASSIVE + "每次升級後可以獲得1個模組欄位",
+        ThemeUtils.PASSIVE + "品質依次為: 石 > 金 > 鐵 > 鑽石 > 下界合金"
     );
 
     public static final SlimefunItemStack ARMOUR_INFO = ThemeUtils.themedItemStack(
         "ARMOUR_INFO",
         SkullTextures.INFO,
         ThemeItemType.INFO,
-        "匠魂防具信息",
-        ThemeUtils.PASSIVE + "匠魂的防具在使用时",
-        ThemeUtils.PASSIVE + "会获得熟练度经验",
-        ThemeUtils.PASSIVE + "积累一定经验可以获得升级",
-        ThemeUtils.PASSIVE + "每次升级后可以获得1个模组栏位",
-        ThemeUtils.PASSIVE + "品质依次为: 皮革 > 锁链 > 铁 > 钻石 > 下界合金"
+        "匠魂防具訊息",
+        ThemeUtils.PASSIVE + "匠魂的防具在使用時",
+        ThemeUtils.PASSIVE + "會獲得熟練度經驗",
+        ThemeUtils.PASSIVE + "積累一定經驗可以獲得升級",
+        ThemeUtils.PASSIVE + "每次升級後可以獲得1個模組欄位",
+        ThemeUtils.PASSIVE + "品質依次為: 皮革 > 鎖鏈 > 鐵 > 鑽石 > 下界合金"
     );
 
     public static final ToolTemplate SHOVEL = new ToolTemplate(ItemGroups.DUMMY, TOOL_SHOVEL, DummyToolTable.TYPE, new ItemStack[9]);
