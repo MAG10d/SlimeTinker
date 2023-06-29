@@ -13,9 +13,9 @@ public final class DummySmelteryTrait {
         "DUMMY_TINKERS_SMELTERY_PROP",
         Material.CHISELED_POLISHED_BLACKSTONE,
         ThemeItemType.MACHINE,
-        "匠魂冶炼炉",
-        "当相应部件使用该金属制成时",
-        "该部件会获得此特性"
+        "匠魂冶煉爐",
+        "當相應部件使用該金屬製成時",
+        "該部件會獲得此特性"
     );
     public static final RecipeType TYPE = new RecipeType(Keys.WS_DUMMY_SMELTERY_A, STACK);
 
