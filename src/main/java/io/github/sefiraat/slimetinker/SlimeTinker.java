@@ -43,8 +43,8 @@ public class SlimeTinker extends AbstractAddon {
     public void enable() {
 
         if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
-            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
-            getLogger().log(Level.SEVERE, "从此处下载: https://50l.cc/gzlib");
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斬前置庫插件(GuizhanLibPlugin) 才能運行!");
+            getLogger().log(Level.SEVERE, "從此處下載: https://50l.cc/gzlib");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -54,8 +54,8 @@ public class SlimeTinker extends AbstractAddon {
         instance = this;
 
         getLogger().info("########################################");
-        getLogger().info("         Slime Tinker  粘液匠魂          ");
-        getLogger().info("       作者: Sefiraat 汉化: ybw0014      ");
+        getLogger().info("         Slime Tinker  黏液匠魂          ");
+        getLogger().info("       作者: Sefiraat 漢化: ybw0014      ");
         getLogger().info("########################################");
 
         ItemGroups.set(this);
