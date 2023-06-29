@@ -50,7 +50,7 @@ public class PlayerInteractListener implements Listener {
                 if (ItemUtils.isTinkersBroken(itemStack)) {
                     event.setCancelled(true);
                     event.getPlayer()
-                         .sendMessage(ThemeUtils.WARNING + "你的工具已经损坏,需要修复!");
+                         .sendMessage(ThemeUtils.WARNING + "你的工具已經損壞,需要修復!");
                 } else {
                     Experience.addExp(itemStack, 1, event.getPlayer(), true);
                 }
