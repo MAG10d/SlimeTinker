@@ -20,58 +20,58 @@ public final class Mods {
         "MOD_REDSTONE_DUMMY",
         Material.REDSTONE,
         ThemeItemType.MOD,
-        "模组: 红石",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器",
+        "模組: 紅石",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器",
         "",
-        ThemeUtils.PASSIVE + "玩家手持该装备时,",
-        ThemeUtils.PASSIVE + "可以获得与模组等级对应的急迫效果"
+        ThemeUtils.PASSIVE + "玩家手持該裝備時,",
+        ThemeUtils.PASSIVE + "可以獲得與模組等級對應的急迫效果"
     );
 
     public static final SlimefunItemStack MOD_LAPIS_DUMMY = ThemeUtils.themedItemStack(
         "MOD_LAPIS_DUMMY",
         Material.LAPIS_LAZULI,
         ThemeItemType.MOD,
-        "模组: 青金石",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器",
+        "模組: 青金石",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器",
         "",
-        ThemeUtils.PASSIVE + "玩家手持该装备时,",
-        ThemeUtils.PASSIVE + "会获得等同于时运或抢夺附魔的效果",
-        ThemeUtils.PASSIVE + "每安装1个该模组可提升10%的效果"
+        ThemeUtils.PASSIVE + "玩家手持該裝備時,",
+        ThemeUtils.PASSIVE + "會獲得等同於時運或搶奪附魔的效果",
+        ThemeUtils.PASSIVE + "每安裝1個該模組可提升10%的效果"
     );
 
     public static final SlimefunItemStack MOD_QUARTZ_DUMMY = ThemeUtils.themedItemStack(
         "MOD_QUARTZ_DUMMY",
         Material.QUARTZ,
         ThemeItemType.MOD,
-        "模组: 石英",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器",
+        "模組: 石英",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器",
         "",
-        ThemeUtils.PASSIVE + "玩家手持该装备时,",
-        ThemeUtils.PASSIVE + "会增加该工具/武器的伤害",
-        ThemeUtils.PASSIVE + "每安装1个该模组可提升20%的效果"
+        ThemeUtils.PASSIVE + "玩家手持該裝備時,",
+        ThemeUtils.PASSIVE + "會增加該工具/武器的傷害",
+        ThemeUtils.PASSIVE + "每安裝1個該模組可提升20%的效果"
     );
 
     public static final SlimefunItemStack MOD_DIAMOND_DUMMY = ThemeUtils.themedItemStack(
         "MOD_DIAMOND_DUMMY",
         Material.DIAMOND,
         ThemeItemType.MOD,
-        "模组: 钻石",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器",
+        "模組: 鑽石",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器",
         "",
-        ThemeUtils.PASSIVE + "玩家手持该装备时,",
-        ThemeUtils.PASSIVE + "受到攻击时有几率反弹伤害",
-        ThemeUtils.PASSIVE + "每安装1个该模组可提升10%的效果"
+        ThemeUtils.PASSIVE + "玩家手持該裝備時,",
+        ThemeUtils.PASSIVE + "受到攻擊時有機率反彈傷害",
+        ThemeUtils.PASSIVE + "每安裝1個該模組可提升10%的效果"
     );
 
     public static final SlimefunItemStack MOD_EMERALD_DUMMY = ThemeUtils.themedItemStack(
         "MOD_EMERALD_DUMMY",
         Material.EMERALD,
         ThemeItemType.MOD,
-        "模组: 绿宝石",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器",
+        "模組: 綠寶石",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器",
         "",
-        ThemeUtils.PASSIVE + "每次使用装备都可以获得额外经验",
-        ThemeUtils.PASSIVE + "每安装1个该模组可提升1点额外工具经验或10%额外武器经验"
+        ThemeUtils.PASSIVE + "每次使用裝備都可以獲得額外經驗",
+        ThemeUtils.PASSIVE + "每安裝1個該模組可提升1點額外工具經驗或10%額外武器經驗"
     );
 
 
@@ -79,11 +79,11 @@ public final class Mods {
         "MOD_PLATE_DUMMY",
         Material.OBSIDIAN,
         ThemeItemType.MOD,
-        "模组: 强化合金板",
-        ThemeUtils.PASSIVE + "可安装装备: 工具/武器/防具",
+        "模組: 強化合金板",
+        ThemeUtils.PASSIVE + "可安裝裝備: 工具/武器/防具",
         "",
-        ThemeUtils.PASSIVE + "每安装1个该模组可增加10%不消耗耐久的几率",
-        ThemeUtils.PASSIVE + "安装10个模组的装备无法破坏"
+        ThemeUtils.PASSIVE + "每安裝1個該模組可增加10%不消耗耐久的機率",
+        ThemeUtils.PASSIVE + "安裝10個模組的裝備無法破壞"
     );
 
 
