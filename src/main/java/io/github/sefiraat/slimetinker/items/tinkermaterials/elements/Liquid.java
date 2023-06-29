@@ -30,7 +30,7 @@ public class Liquid {
             texture,
             ThemeItemType.MOLTEN_METAL,
             "熔融" + titName,
-            ThemeUtils.PASSIVE + "熔融态" + titName
+            ThemeUtils.PASSIVE + "熔融態" + titName
         );
 
         this.item = new SlimefunItem(ItemGroups.MOLTEN_METALS, itemStack, DummySmelteryMolten.TYPE, new ItemStack[]{
