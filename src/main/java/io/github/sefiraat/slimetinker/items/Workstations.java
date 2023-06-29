@@ -2,310 +2,150 @@ package io.github.sefiraat.slimetinker.items;
 
 import io.github.sefiraat.slimetinker.SlimeTinker;
 import io.github.sefiraat.slimetinker.itemgroups.ItemGroups;
-import io.github.sefiraat.slimetinker.items.templates.PartTemplate;
-import io.github.sefiraat.slimetinker.items.templates.RepairkitTemplate;
-import io.github.sefiraat.slimetinker.items.workstations.smeltery.DummySmeltery;
-import io.github.sefiraat.slimetinker.items.workstations.workbench.DummyWorkbench;
-import io.github.sefiraat.slimetinker.utils.ItemUtils;
-import io.github.sefiraat.slimetinker.utils.SkullTextures;
+import io.github.sefiraat.slimetinker.items.workstations.armourtable.ArmourTable;
+import io.github.sefiraat.slimetinker.items.workstations.modificationstation.ModificationStation;
+import io.github.sefiraat.slimetinker.items.workstations.repairbench.RepairBench;
+import io.github.sefiraat.slimetinker.items.workstations.swappingstation.SwappingStation;
+import io.github.sefiraat.slimetinker.items.workstations.tooltable.ToolTable;
+import io.github.sefiraat.slimetinker.items.workstations.workbench.Workbench;
 import io.github.sefiraat.slimetinker.utils.ThemeUtils;
 import io.github.sefiraat.slimetinker.utils.enums.ThemeItemType;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public final class Parts {
+import javax.annotation.Nonnull;
 
-    private Parts() {
+public final class Workstations {
+
+    private Workstations() {
         throw new UnsupportedOperationException("Utility Class");
     }
 
-    public static final String DESC_ERROR = "錯誤";
-
-    public static final SlimefunItemStack PART_SHOVEL_HEAD_DUMMY = ThemeUtils.themedItemStack(
-        "PART_SHOVEL_HEAD_DUMMY",
-        SkullTextures.PART_SHOVEL_HEAD,
-        ThemeItemType.CAST,
-        "部件: 剷頭",
-        ThemeUtils.PASSIVE + "一個剷頭部件"
+    // Tinkers Smeltery
+    public static final SlimefunItemStack TINKERS_SMELTERY_CORE = ThemeUtils.themedItemStack(
+        "TINKERS_SMELTERY_CORE",
+        Material.CHISELED_POLISHED_BLACKSTONE,
+        ThemeItemType.MACHINE,
+        "匠魂冶煉爐",
+        "把金屬熔化為液體",
+        "然後可以冶煉合金",
+        "或根據模具澆鑄出各種物品",
+        "需要岩漿作為燃料"
     );
 
-    public static final SlimefunItemStack PART_PICKAXE_HEAD_DUMMY = ThemeUtils.themedItemStack(
-        "PART_PICKAXE_HEAD_DUMMY",
-        SkullTextures.PART_PICKAXE_HEAD,
-        ThemeItemType.CAST,
-        "部件: 鎬頭",
-        ThemeUtils.PASSIVE + "一個鎬頭部件"
+    // Workbench
+    public static final SlimefunItemStack TINKERS_WORKBENCH = ThemeUtils.themedItemStack(
+        "TINKERS_WORKBENCH",
+        Material.FLETCHING_TABLE,
+        ThemeItemType.MACHINE,
+        "匠魂合成站",
+        "用來合成各種物品",
+        "包括匠魂工具的部件與建築材料",
+        "也可以當成增強型工作檯使用"
     );
 
-    public static final SlimefunItemStack PART_AXE_HEAD_DUMMY = ThemeUtils.themedItemStack(
-        "PART_AXE_HEAD_DUMMY",
-        SkullTextures.PART_AXE_HEAD,
-        ThemeItemType.CAST,
-        "部件: 斧刃",
-        ThemeUtils.PASSIVE + "一個斧刃部件"
+    // Tool Table
+    public static final SlimefunItemStack TINKERS_TABLE = ThemeUtils.themedItemStack(
+        "TINKERS_TABLE",
+        Material.SMITHING_TABLE,
+        ThemeItemType.MACHINE,
+        "匠魂工具組裝台",
+        "將部件組裝為工具"
     );
 
-    public static final SlimefunItemStack PART_HOE_HEAD_DUMMY = ThemeUtils.themedItemStack(
-        "PART_HOE_HEAD_DUMMY",
-        SkullTextures.PART_HOE_HEAD,
-        ThemeItemType.CAST,
-        "部件: 鋤頭",
-        ThemeUtils.PASSIVE + "一個鋤頭部件"
+    // Armour Table
+    public static final SlimefunItemStack TINKERS_ARMOUR_TABLE = ThemeUtils.themedItemStack(
+        "TINKERS_ARMOUR_TABLE",
+        Material.SMITHING_TABLE,
+        ThemeItemType.MACHINE,
+        "匠魂防具組裝台",
+        "將部件組裝為防具"
     );
 
-    public static final SlimefunItemStack PART_SWORD_BLADE_DUMMY = ThemeUtils.themedItemStack(
-        "PART_SWORD_BLADE_DUMMY",
-        SkullTextures.PART_SWORD_BLADE,
-        ThemeItemType.CAST,
-        "部件: 劍刃",
-        ThemeUtils.PASSIVE + "一個劍刃部件"
+    // Repair
+    public static final SlimefunItemStack TINKERS_REPAIR_BENCH = ThemeUtils.themedItemStack(
+        "TINKERS_REPAIR_BENCH",
+        Material.CARTOGRAPHY_TABLE,
+        ThemeItemType.MACHINE,
+        "匠魂修復台",
+        "修復匠魂裝備"
     );
 
-    public static final SlimefunItemStack PART_TOOL_ROD_DUMMY = ThemeUtils.themedItemStack(
-        "PART_TOOL_ROD_DUMMY",
-        SkullTextures.PART_TOOL_ROD,
-        ThemeItemType.CAST,
-        "部件: 手把",
-        ThemeUtils.PASSIVE + "一個手把部件"
+    // Swapping
+    public static final SlimefunItemStack TINKERS_SWAPPING_STATION = ThemeUtils.themedItemStack(
+        "TINKERS_SWAPPING_STATION",
+        Material.LOOM,
+        ThemeItemType.MACHINE,
+        "匠魂部件更換台",
+        "使用新的部件替換已有部件"
     );
 
-    public static final SlimefunItemStack PART_BINDING_DUMMY = ThemeUtils.themedItemStack(
-        "PART_BINDING_DUMMY",
-        SkullTextures.PART_BINDING,
-        ThemeItemType.CAST,
-        "部件: 綁定結",
-        ThemeUtils.PASSIVE + "一個綁定結部件"
+    // Modification
+    public static final SlimefunItemStack TINKERS_MOD_STATION = ThemeUtils.themedItemStack(
+        "TINKERS_MOD_STATION",
+        Material.GRINDSTONE,
+        ThemeItemType.MACHINE,
+        "匠魂模組工作站",
+        "將模組安裝到匠魂裝備上"
     );
 
-    public static final SlimefunItemStack PART_HELM_PLATE_DUMMY = ThemeUtils.themedItemStack(
-        "PART_HELM_PLATE_DUMMY",
-        SkullTextures.PART_HELM_PLATES,
-        ThemeItemType.CAST,
-        "部件: 頭盔板",
-        ThemeUtils.PASSIVE + "一個頭盔板部件"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_SMELTERY_MULTI = new ItemStack[]{
+        Materials.SEARED_BRICK_BLOCK, Materials.SEARED_BRICK_BLOCK, Materials.SEARED_BRICK_BLOCK,
+        Materials.SEARED_TANK, Materials.SMELTERY_CONTROLLER, Materials.SPOUT,
+        Materials.SEARED_BRICK_BLOCK, Materials.SEARED_BRICK_BLOCK, Materials.SEARED_BRICK_BLOCK
+    };
 
-    public static final SlimefunItemStack PART_CHEST_PLATE_DUMMY = ThemeUtils.themedItemStack(
-        "PART_CHEST_PLATE_DUMMY",
-        SkullTextures.PART_CHEST_PLATES,
-        ThemeItemType.CAST,
-        "部件: 胸甲板",
-        ThemeUtils.PASSIVE + "一個胸甲板部件"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_WORKBENCH = new ItemStack[]{
+        new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK), new ItemStack(Material.IRON_BLOCK),
+        new ItemStack(Material.OAK_PLANKS), new ItemStack(Material.CRAFTING_TABLE), new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), new ItemStack(Material.DISPENSER), new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_LEG_PLATE_DUMMY = ThemeUtils.themedItemStack(
-        "PART_LEG_PLATE_DUMMY",
-        SkullTextures.PART_LEG_PLATES,
-        ThemeItemType.CAST,
-        "部件: 護腿板",
-        ThemeUtils.PASSIVE + "一個護腿板部件"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_TABLE = new ItemStack[]{
+        Materials.BLOCK_CAST_STEEL, Materials.BLOCK_CAST_STEEL, Materials.BLOCK_CAST_STEEL,
+        new ItemStack(Material.OAK_PLANKS), Workstations.TINKERS_WORKBENCH, new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), SlimefunItems.POWER_CRYSTAL, new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_BOOT_PLATE_DUMMY = ThemeUtils.themedItemStack(
-        "PART_BOOT_PLATE_DUMMY",
-        SkullTextures.PART_BOOTS_PLATES,
-        ThemeItemType.CAST,
-        "部件: 靴子板",
-        ThemeUtils.PASSIVE + "一個靴子板部件"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_ARMOUR_TABLE = new ItemStack[]{
+        Materials.BLOCK_CAST_DAMASCUS_STEEL, Materials.BLOCK_CAST_DAMASCUS_STEEL, Materials.BLOCK_CAST_DAMASCUS_STEEL,
+        new ItemStack(Material.OAK_PLANKS), Workstations.TINKERS_WORKBENCH, new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), SlimefunItems.POWER_CRYSTAL, new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_MAIL_LINKS_DUMMY = ThemeUtils.themedItemStack(
-        "PART_MAIL_LINKS_DUMMY",
-        SkullTextures.PART_LINKS,
-        ThemeItemType.CAST,
-        "部件: 盔甲接合物",
-        ThemeUtils.PASSIVE + "一個盔甲接合物部件"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_REPAIR_BENCH = new ItemStack[]{
+        Materials.BLOCK_CAST_ALUMINUM, Materials.BLOCK_CAST_ALUMINUM, Materials.BLOCK_CAST_ALUMINUM,
+        new ItemStack(Material.OAK_PLANKS), Workstations.TINKERS_WORKBENCH, new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), SlimefunItems.POWER_CRYSTAL, new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_GAMBESON_DUMMY = ThemeUtils.themedItemStack(
-        "PART_GAMBESON_DUMMY",
-        SkullTextures.PART_GAMBESON,
-        ThemeItemType.CAST,
-        "部件: 護身軟甲",
-        ThemeUtils.PASSIVE + "一件盔甲內的軟甲"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_SWAPPING_STATION = new ItemStack[]{
+        Materials.BLOCK_CAST_COR_BRONZE, Materials.BLOCK_CAST_COR_BRONZE, Materials.BLOCK_CAST_COR_BRONZE,
+        new ItemStack(Material.OAK_PLANKS), Workstations.TINKERS_WORKBENCH, new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), SlimefunItems.POWER_CRYSTAL, new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_REPAIR_KIT_DUMMY = ThemeUtils.themedItemStack(
-        "PART_REPAIR_KIT_DUMMY",
-        Material.CHEST_MINECART,
-        ThemeItemType.CAST,
-        "部件: 修復工具",
-        ThemeUtils.PASSIVE + "用於在匠魂修復台中修復損壞的裝備"
-    );
+    private static final ItemStack[] RECIPE_TINKERS_MOD_STATION = new ItemStack[]{
+        Materials.BLOCK_CAST_REINFORCED, Materials.BLOCK_CAST_REINFORCED, Materials.BLOCK_CAST_REINFORCED,
+        new ItemStack(Material.OAK_PLANKS), Workstations.TINKERS_TABLE, new ItemStack(Material.OAK_PLANKS),
+        new ItemStack(Material.OAK_PLANKS), SlimefunItems.POWER_CRYSTAL, new ItemStack(Material.OAK_PLANKS)
+    };
 
-    public static final SlimefunItemStack PART_AXE_HEAD = ThemeUtils.themedItemStack(
-        "PART_AXE_HEAD",
-        SkullTextures.PART_AXE_HEAD,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
+    public static void set(@Nonnull SlimeTinker p) {
 
-    public static final SlimefunItemStack PART_HOE_HEAD = ThemeUtils.themedItemStack(
-        "PART_HOE_HEAD",
-        SkullTextures.PART_HOE_HEAD,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
+        // Setting the workbench to the plugin so during the first tick we can load additional recipes from other plugins
+        p.setWorkbench(new Workbench(ItemGroups.WORKSTATIONS, TINKERS_WORKBENCH, RecipeType.ENHANCED_CRAFTING_TABLE, RECIPE_TINKERS_WORKBENCH));
+        p.getWorkbench().register(p);
 
-    public static final SlimefunItemStack PART_PICKAXE_HEAD = ThemeUtils.themedItemStack(
-        "PART_PICKAXE_HEAD",
-        SkullTextures.PART_PICKAXE_HEAD,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_SHOVEL_HEAD = ThemeUtils.themedItemStack(
-        "PART_SHOVEL_HEAD",
-        SkullTextures.PART_SHOVEL_HEAD,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_SWORD_BLADE = ThemeUtils.themedItemStack(
-        "PART_SWORD_BLADE",
-        SkullTextures.PART_SWORD_BLADE,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_TOOL_ROD = ThemeUtils.themedItemStack(
-        "PART_TOOL_ROD",
-        SkullTextures.PART_TOOL_ROD,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_REPAIR_KIT = ThemeUtils.themedItemStack(
-        "PART_REPAIR_KIT",
-        Material.CHEST_MINECART,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_BINDING_GENERAL_DISPLAY = ThemeUtils.themedItemStack(
-        "PART_BINDING_GENERAL_DISPLAY",
-        Material.STRING,
-        ThemeItemType.CRAFTING,
-        "綁定結材料",
-        ThemeUtils.PASSIVE + "可以使用任意適合做綁定結的材料",
-        ThemeUtils.PASSIVE + "不僅可以用線,其他適用材料都可以",
-        ThemeUtils.PASSIVE + "按照這樣擺放即可"
-    );
-
-    public static final SlimefunItemStack PART_HELM_PLATES = ThemeUtils.themedItemStack(
-        "PART_HELM_PLATES",
-        SkullTextures.PART_HELM_PLATES,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_CHEST_PLATES = ThemeUtils.themedItemStack(
-        "PART_CHEST_PLATES",
-        SkullTextures.PART_CHEST_PLATES,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_LEG_PLATES = ThemeUtils.themedItemStack(
-        "PART_LEG_PLATES",
-        SkullTextures.PART_LEG_PLATES,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_BOOTS_PLATES = ThemeUtils.themedItemStack(
-        "PART_BOOTS_PLATES",
-        SkullTextures.PART_BOOTS_PLATES,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_MAIL_LINKS = ThemeUtils.themedItemStack(
-        "PART_MAIL_LINKS",
-        SkullTextures.PART_LINKS,
-        ThemeItemType.PART,
-        DESC_ERROR,
-        ThemeUtils.PASSIVE + DESC_ERROR
-    );
-
-    public static final SlimefunItemStack PART_GAMBESON_GENERAL_DISPLAY = ThemeUtils.themedItemStack(
-        "PART_GAMBESON_GENERAL_DISPLAY",
-        Material.STRING,
-        ThemeItemType.CRAFTING,
-        "護身軟甲材料",
-        ThemeUtils.PASSIVE + "可以使用任意適合做護身軟甲的材料",
-        ThemeUtils.PASSIVE + "不僅可以用線,其他適用材料都可以",
-        ThemeUtils.PASSIVE + "按照這樣擺放即可"
-    );
-
-    // Statics for Recipes
-    public static final PartTemplate SHOVEL_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_SHOVEL_HEAD, DummySmeltery.TYPE, new ItemStack[9], "剷頭");
-    public static final PartTemplate PICKAXE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_PICKAXE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "鎬頭");
-    public static final PartTemplate AXE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_AXE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "斧刃");
-    public static final PartTemplate HOE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_HOE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "鋤頭");
-    public static final PartTemplate SWORD_BLADE = new PartTemplate(ItemGroups.DUMMY, PART_SWORD_BLADE, DummySmeltery.TYPE, new ItemStack[9], "劍刃");
-    public static final PartTemplate TOOL_ROD = new PartTemplate(ItemGroups.DUMMY, PART_TOOL_ROD, DummySmeltery.TYPE, new ItemStack[9], "手把");
-    public static final RepairkitTemplate REPAIR_KIT = new RepairkitTemplate(ItemGroups.DUMMY, PART_REPAIR_KIT, DummySmeltery.TYPE, new ItemStack[9], "修復工具");
-    public static final PartTemplate HELM_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_HELM_PLATES, DummySmeltery.TYPE, new ItemStack[9], "頭盔板");
-    public static final PartTemplate CHEST_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_CHEST_PLATES, DummySmeltery.TYPE, new ItemStack[9], "胸甲板");
-    public static final PartTemplate LEG_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_LEG_PLATES, DummySmeltery.TYPE, new ItemStack[9], "護腿板");
-    public static final PartTemplate BOOT_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_BOOTS_PLATES, DummySmeltery.TYPE, new ItemStack[9], "靴子板");
-    public static final PartTemplate MAIL_LINKS = new PartTemplate(ItemGroups.DUMMY, PART_MAIL_LINKS, DummySmeltery.TYPE, new ItemStack[9], "盔甲接合物");
-
-    public static void set(SlimeTinker p) {
-
-        // Dummies for the recipe book
-        new UnplaceableBlock(ItemGroups.PARTS, PART_SHOVEL_HEAD_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_SHOVELHEAD)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_PICKAXE_HEAD_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_PICKAXEHEAD)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_AXE_HEAD_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_AXEHEAD)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_HOE_HEAD_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_HOEHEAD)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_SWORD_BLADE_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_SWORDBLADE)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_TOOL_ROD_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_TOOLROD)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_BINDING_DUMMY, DummyWorkbench.TYPE, new ItemStack[]{
-            PART_BINDING_GENERAL_DISPLAY, null, PART_BINDING_GENERAL_DISPLAY,
-            null, PART_BINDING_GENERAL_DISPLAY, null,
-            PART_BINDING_GENERAL_DISPLAY, null, PART_BINDING_GENERAL_DISPLAY
-        }).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_HELM_PLATE_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_HELM_PLATE)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_CHEST_PLATE_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_CHEST_PLATE)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_LEG_PLATE_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_LEG_PLATE)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_BOOT_PLATE_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_BOOT_PLATE)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_MAIL_LINKS_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_MAIL_LINK)).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_GAMBESON_DUMMY, DummyWorkbench.TYPE, new ItemStack[]{
-            null, PART_GAMBESON_GENERAL_DISPLAY, PART_BINDING_GENERAL_DISPLAY,
-            PART_GAMBESON_GENERAL_DISPLAY, null, PART_GAMBESON_GENERAL_DISPLAY,
-            PART_BINDING_GENERAL_DISPLAY, PART_GAMBESON_GENERAL_DISPLAY, null
-        }).register(p);
-        new UnplaceableBlock(ItemGroups.PARTS, PART_REPAIR_KIT_DUMMY, DummySmeltery.TYPE, ItemUtils.getMiddleOnlyRecipe(Casts.CAST_REPAIRKIT)).register(p);
-
-        // Real ones, not in recipe book due to the variations
-        SHOVEL_HEAD.register(p);
-        PICKAXE_HEAD.register(p);
-        AXE_HEAD.register(p);
-        HOE_HEAD.register(p);
-        SWORD_BLADE.register(p);
-        TOOL_ROD.register(p);
-
-        REPAIR_KIT.register(p);
-
-        HELM_PLATE.register(p);
-        CHEST_PLATE.register(p);
-        LEG_PLATE.register(p);
-        BOOT_PLATE.register(p);
-
+        new UnplaceableBlock(ItemGroups.WORKSTATIONS, TINKERS_SMELTERY_CORE, RecipeType.MULTIBLOCK, RECIPE_TINKERS_SMELTERY_MULTI).register(p);
+        new ToolTable(ItemGroups.WORKSTATIONS, TINKERS_TABLE, Workbench.TYPE, RECIPE_TINKERS_TABLE).register(p);
+        new ArmourTable(ItemGroups.WORKSTATIONS, TINKERS_ARMOUR_TABLE, Workbench.TYPE, RECIPE_TINKERS_ARMOUR_TABLE).register(p);
+        new RepairBench(ItemGroups.WORKSTATIONS, TINKERS_REPAIR_BENCH, Workbench.TYPE, RECIPE_TINKERS_REPAIR_BENCH).register(p);
+        new SwappingStation(ItemGroups.WORKSTATIONS, TINKERS_SWAPPING_STATION, Workbench.TYPE, RECIPE_TINKERS_SWAPPING_STATION).register(p);
+        new ModificationStation(ItemGroups.WORKSTATIONS, TINKERS_MOD_STATION, Workbench.TYPE, RECIPE_TINKERS_MOD_STATION).register(p);
     }
-
 }
