@@ -21,22 +21,22 @@ public final class Parts {
         throw new UnsupportedOperationException("Utility Class");
     }
 
-    public static final String DESC_ERROR = "错误";
+    public static final String DESC_ERROR = "錯誤";
 
     public static final SlimefunItemStack PART_SHOVEL_HEAD_DUMMY = ThemeUtils.themedItemStack(
         "PART_SHOVEL_HEAD_DUMMY",
         SkullTextures.PART_SHOVEL_HEAD,
         ThemeItemType.CAST,
-        "部件: 铲头",
-        ThemeUtils.PASSIVE + "一个铲头部件"
+        "部件: 剷頭",
+        ThemeUtils.PASSIVE + "一個剷頭部件"
     );
 
     public static final SlimefunItemStack PART_PICKAXE_HEAD_DUMMY = ThemeUtils.themedItemStack(
         "PART_PICKAXE_HEAD_DUMMY",
         SkullTextures.PART_PICKAXE_HEAD,
         ThemeItemType.CAST,
-        "部件: 镐头",
-        ThemeUtils.PASSIVE + "一个镐头部件"
+        "部件: 鎬頭",
+        ThemeUtils.PASSIVE + "一個鎬頭部件"
     );
 
     public static final SlimefunItemStack PART_AXE_HEAD_DUMMY = ThemeUtils.themedItemStack(
@@ -44,47 +44,47 @@ public final class Parts {
         SkullTextures.PART_AXE_HEAD,
         ThemeItemType.CAST,
         "部件: 斧刃",
-        ThemeUtils.PASSIVE + "一个斧刃部件"
+        ThemeUtils.PASSIVE + "一個斧刃部件"
     );
 
     public static final SlimefunItemStack PART_HOE_HEAD_DUMMY = ThemeUtils.themedItemStack(
         "PART_HOE_HEAD_DUMMY",
         SkullTextures.PART_HOE_HEAD,
         ThemeItemType.CAST,
-        "部件: 锄头",
-        ThemeUtils.PASSIVE + "一个锄头部件"
+        "部件: 鋤頭",
+        ThemeUtils.PASSIVE + "一個鋤頭部件"
     );
 
     public static final SlimefunItemStack PART_SWORD_BLADE_DUMMY = ThemeUtils.themedItemStack(
         "PART_SWORD_BLADE_DUMMY",
         SkullTextures.PART_SWORD_BLADE,
         ThemeItemType.CAST,
-        "部件: 剑刃",
-        ThemeUtils.PASSIVE + "一个剑刃部件"
+        "部件: 劍刃",
+        ThemeUtils.PASSIVE + "一個劍刃部件"
     );
 
     public static final SlimefunItemStack PART_TOOL_ROD_DUMMY = ThemeUtils.themedItemStack(
         "PART_TOOL_ROD_DUMMY",
         SkullTextures.PART_TOOL_ROD,
         ThemeItemType.CAST,
-        "部件: 手柄",
-        ThemeUtils.PASSIVE + "一个手柄部件"
+        "部件: 手把",
+        ThemeUtils.PASSIVE + "一個手把部件"
     );
 
     public static final SlimefunItemStack PART_BINDING_DUMMY = ThemeUtils.themedItemStack(
         "PART_BINDING_DUMMY",
         SkullTextures.PART_BINDING,
         ThemeItemType.CAST,
-        "部件: 绑定结",
-        ThemeUtils.PASSIVE + "一个绑定结部件"
+        "部件: 綁定結",
+        ThemeUtils.PASSIVE + "一個綁定結部件"
     );
 
     public static final SlimefunItemStack PART_HELM_PLATE_DUMMY = ThemeUtils.themedItemStack(
         "PART_HELM_PLATE_DUMMY",
         SkullTextures.PART_HELM_PLATES,
         ThemeItemType.CAST,
-        "部件: 头盔板",
-        ThemeUtils.PASSIVE + "一个头盔板部件"
+        "部件: 頭盔板",
+        ThemeUtils.PASSIVE + "一個頭盔板部件"
     );
 
     public static final SlimefunItemStack PART_CHEST_PLATE_DUMMY = ThemeUtils.themedItemStack(
@@ -92,15 +92,15 @@ public final class Parts {
         SkullTextures.PART_CHEST_PLATES,
         ThemeItemType.CAST,
         "部件: 胸甲板",
-        ThemeUtils.PASSIVE + "一个胸甲板部件"
+        ThemeUtils.PASSIVE + "一個胸甲板部件"
     );
 
     public static final SlimefunItemStack PART_LEG_PLATE_DUMMY = ThemeUtils.themedItemStack(
         "PART_LEG_PLATE_DUMMY",
         SkullTextures.PART_LEG_PLATES,
         ThemeItemType.CAST,
-        "部件: 护腿板",
-        ThemeUtils.PASSIVE + "一个护腿板部件"
+        "部件: 護腿板",
+        ThemeUtils.PASSIVE + "一個護腿板部件"
     );
 
     public static final SlimefunItemStack PART_BOOT_PLATE_DUMMY = ThemeUtils.themedItemStack(
@@ -108,7 +108,7 @@ public final class Parts {
         SkullTextures.PART_BOOTS_PLATES,
         ThemeItemType.CAST,
         "部件: 靴子板",
-        ThemeUtils.PASSIVE + "一个靴子板部件"
+        ThemeUtils.PASSIVE + "一個靴子板部件"
     );
 
     public static final SlimefunItemStack PART_MAIL_LINKS_DUMMY = ThemeUtils.themedItemStack(
@@ -116,23 +116,23 @@ public final class Parts {
         SkullTextures.PART_LINKS,
         ThemeItemType.CAST,
         "部件: 盔甲接合物",
-        ThemeUtils.PASSIVE + "一个盔甲接合物部件"
+        ThemeUtils.PASSIVE + "一個盔甲接合物部件"
     );
 
     public static final SlimefunItemStack PART_GAMBESON_DUMMY = ThemeUtils.themedItemStack(
         "PART_GAMBESON_DUMMY",
         SkullTextures.PART_GAMBESON,
         ThemeItemType.CAST,
-        "部件: 护身软甲",
-        ThemeUtils.PASSIVE + "一件盔甲内的软甲"
+        "部件: 護身軟甲",
+        ThemeUtils.PASSIVE + "一件盔甲內的軟甲"
     );
 
     public static final SlimefunItemStack PART_REPAIR_KIT_DUMMY = ThemeUtils.themedItemStack(
         "PART_REPAIR_KIT_DUMMY",
         Material.CHEST_MINECART,
         ThemeItemType.CAST,
-        "部件: 修复工具",
-        ThemeUtils.PASSIVE + "用于在匠魂修复台中修复损坏的装备"
+        "部件: 修復工具",
+        ThemeUtils.PASSIVE + "用於在匠魂修復台中修復損壞的裝備"
     );
 
     public static final SlimefunItemStack PART_AXE_HEAD = ThemeUtils.themedItemStack(
@@ -195,10 +195,10 @@ public final class Parts {
         "PART_BINDING_GENERAL_DISPLAY",
         Material.STRING,
         ThemeItemType.CRAFTING,
-        "绑定结材料",
-        ThemeUtils.PASSIVE + "可以使用任意适合做绑定结的材料",
-        ThemeUtils.PASSIVE + "不仅可以用线,其他适用材料都可以",
-        ThemeUtils.PASSIVE + "按照这样摆放即可"
+        "綁定結材料",
+        ThemeUtils.PASSIVE + "可以使用任意適合做綁定結的材料",
+        ThemeUtils.PASSIVE + "不僅可以用線,其他適用材料都可以",
+        ThemeUtils.PASSIVE + "按照這樣擺放即可"
     );
 
     public static final SlimefunItemStack PART_HELM_PLATES = ThemeUtils.themedItemStack(
@@ -245,23 +245,23 @@ public final class Parts {
         "PART_GAMBESON_GENERAL_DISPLAY",
         Material.STRING,
         ThemeItemType.CRAFTING,
-        "护身软甲材料",
-        ThemeUtils.PASSIVE + "可以使用任意适合做护身软甲的材料",
-        ThemeUtils.PASSIVE + "不仅可以用线,其他适用材料都可以",
-        ThemeUtils.PASSIVE + "按照这样摆放即可"
+        "護身軟甲材料",
+        ThemeUtils.PASSIVE + "可以使用任意適合做護身軟甲的材料",
+        ThemeUtils.PASSIVE + "不僅可以用線,其他適用材料都可以",
+        ThemeUtils.PASSIVE + "按照這樣擺放即可"
     );
 
     // Statics for Recipes
-    public static final PartTemplate SHOVEL_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_SHOVEL_HEAD, DummySmeltery.TYPE, new ItemStack[9], "铲头");
-    public static final PartTemplate PICKAXE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_PICKAXE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "镐头");
+    public static final PartTemplate SHOVEL_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_SHOVEL_HEAD, DummySmeltery.TYPE, new ItemStack[9], "剷頭");
+    public static final PartTemplate PICKAXE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_PICKAXE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "鎬頭");
     public static final PartTemplate AXE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_AXE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "斧刃");
-    public static final PartTemplate HOE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_HOE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "锄头");
-    public static final PartTemplate SWORD_BLADE = new PartTemplate(ItemGroups.DUMMY, PART_SWORD_BLADE, DummySmeltery.TYPE, new ItemStack[9], "剑刃");
-    public static final PartTemplate TOOL_ROD = new PartTemplate(ItemGroups.DUMMY, PART_TOOL_ROD, DummySmeltery.TYPE, new ItemStack[9], "手柄");
-    public static final RepairkitTemplate REPAIR_KIT = new RepairkitTemplate(ItemGroups.DUMMY, PART_REPAIR_KIT, DummySmeltery.TYPE, new ItemStack[9], "修复工具");
-    public static final PartTemplate HELM_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_HELM_PLATES, DummySmeltery.TYPE, new ItemStack[9], "头盔板");
+    public static final PartTemplate HOE_HEAD = new PartTemplate(ItemGroups.DUMMY, PART_HOE_HEAD, DummySmeltery.TYPE, new ItemStack[9], "鋤頭");
+    public static final PartTemplate SWORD_BLADE = new PartTemplate(ItemGroups.DUMMY, PART_SWORD_BLADE, DummySmeltery.TYPE, new ItemStack[9], "劍刃");
+    public static final PartTemplate TOOL_ROD = new PartTemplate(ItemGroups.DUMMY, PART_TOOL_ROD, DummySmeltery.TYPE, new ItemStack[9], "手把");
+    public static final RepairkitTemplate REPAIR_KIT = new RepairkitTemplate(ItemGroups.DUMMY, PART_REPAIR_KIT, DummySmeltery.TYPE, new ItemStack[9], "修復工具");
+    public static final PartTemplate HELM_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_HELM_PLATES, DummySmeltery.TYPE, new ItemStack[9], "頭盔板");
     public static final PartTemplate CHEST_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_CHEST_PLATES, DummySmeltery.TYPE, new ItemStack[9], "胸甲板");
-    public static final PartTemplate LEG_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_LEG_PLATES, DummySmeltery.TYPE, new ItemStack[9], "护腿板");
+    public static final PartTemplate LEG_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_LEG_PLATES, DummySmeltery.TYPE, new ItemStack[9], "護腿板");
     public static final PartTemplate BOOT_PLATE = new PartTemplate(ItemGroups.DUMMY, PART_BOOTS_PLATES, DummySmeltery.TYPE, new ItemStack[9], "靴子板");
     public static final PartTemplate MAIL_LINKS = new PartTemplate(ItemGroups.DUMMY, PART_MAIL_LINKS, DummySmeltery.TYPE, new ItemStack[9], "盔甲接合物");
 
