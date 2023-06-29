@@ -1,223 +1,306 @@
-package io.github.sefiraat.slimetinker.items.workstations.swappingstation;
+package io.github.sefiraat.slimetinker.items.workstations.smeltery;
 
-import com.google.common.base.Preconditions;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
+import io.github.mooy1.infinitylib.common.StackUtils;
+import io.github.sefiraat.slimetinker.SlimeTinker;
+import io.github.sefiraat.slimetinker.items.tinkermaterials.TinkerMaterial;
+import io.github.sefiraat.slimetinker.items.tinkermaterials.TinkerMaterialManager;
+import io.github.sefiraat.slimetinker.items.tinkermaterials.elements.Alloy;
+import io.github.sefiraat.slimetinker.items.tinkermaterials.recipes.CastResult;
+import io.github.sefiraat.slimetinker.items.tinkermaterials.recipes.MoltenResult;
 import io.github.sefiraat.slimetinker.utils.GUIItems;
-import io.github.sefiraat.slimetinker.utils.Ids;
 import io.github.sefiraat.slimetinker.utils.ItemUtils;
-import io.github.sefiraat.slimetinker.utils.Keys;
 import io.github.sefiraat.slimetinker.utils.ThemeUtils;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class SwappingStation extends MenuBlock {
+public final class TinkersSmelteryCache extends AbstractCache {
 
-    protected static final int CRAFT_BUTTON = 14;
-    protected static final int OUTPUT_SLOT = 16;
-    private static final int[] BACKGROUND_SLOTS = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
-    private static final int INPUT_ITEM = 10;
-    private static final int INPUT_PART = 12;
+    public static final int LAVA_MAX = 1000;
+    public static final int LAVA_PER_BUCKET = 250;
+    public static final int METALS_MAX = 1000;
+    public static final String LAVA_LEVEL_BS = "tnk-lava-level";
+    public static final String METAL_LEVEL_PREFIX = "tnk-metal:";
 
-    public SwappingStation(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(itemGroup, item, recipeType, recipe);
-    }
+    private final Map<String, Integer> tankContent = new LinkedHashMap<>();
+    private int levelLava;
 
-    protected void craft(BlockMenu blockMenu, Player player) {
-        ItemStack item = blockMenu.getItemInSlot(INPUT_ITEM);
-        ItemStack part = blockMenu.getItemInSlot(INPUT_PART);
+    public TinkersSmelteryCache(BlockMenu blockMenu) {
+        super(blockMenu);
+        process(true);
 
-        // No tool dummy!
-        if (item == null) {
-            player.sendMessage(ThemeUtils.WARNING + "在第一格内放入匠魂装备");
-            return;
-        }
-
-        if (item.getAmount() > 1) {
-            player.sendMessage(ThemeUtils.WARNING + "匠魂装备不能堆叠");
-            return;
-        }
-
-        if (part == null) {
-            player.sendMessage(ThemeUtils.WARNING + "在第二格内放入替换的部件");
-            return;
-        }
-
-        String partClass = ItemUtils.getPartClass(part);
-        String partType = ItemUtils.getPartType(part);
-        String partMaterial = ItemUtils.getPartMaterial(part);
-
-        if (ItemUtils.isTool(item)) {
-            if (partClass != null && ItemUtils.partIsTool(partClass)) {
-                swapTool(blockMenu, player, item, partClass, partType, partMaterial);
-            } else {
-                player.sendMessage(ThemeUtils.WARNING + "该部件不能替换到此工具/武器上");
-            }
-        } else if (ItemUtils.isArmour(item)) {
-            if (partClass != null && ItemUtils.partIsArmour(partClass)) {
-                swapArmour(blockMenu, player, item, partClass, partType, partMaterial);
-            } else {
-                player.sendMessage(ThemeUtils.WARNING + "该部件不能替换到此防具上");
-            }
-        } else {
-            player.sendMessage(ThemeUtils.WARNING + "第一格内的物品不是匠魂工具/武器/防具");
-        }
-    }
-
-    private void swapTool(BlockMenu blockMenu,
-                          Player player,
-                          ItemStack item,
-                          String partClass,
-                          String partType,
-                          String partMaterial
-    ) {
-        // The part is a head part but the type is either null or not matching the tool (Axe head part for shovel etc.)
-        if (partClass.equals(Ids.HEAD) && (partType != null && !partType.equals(ItemUtils.getToolTypeName(item)))) {
-            player.sendMessage(ThemeUtils.WARNING + "该工具头部与工具类型不一致,无法替换");
-            return;
-        }
-
-        ItemStack newTool = item.clone();
-        ItemMeta newToolMeta = newTool.getItemMeta();
-
-        checkAndChangeExplosiveness(newTool, newToolMeta, partMaterial, partClass);
-
-        switch (partClass) {
-            case Ids.HEAD:
-                PersistentDataAPI.setString(newToolMeta, Keys.TOOL_INFO_HEAD_MATERIAL, partMaterial);
-                break;
-            case Ids.BINDING:
-                PersistentDataAPI.setString(newToolMeta, Keys.TOOL_INFO_BINDER_MATERIAL, partMaterial);
-                break;
-            case Ids.ROD:
-                PersistentDataAPI.setString(newToolMeta, Keys.TOOL_INFO_ROD_MATERIAL, partMaterial);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + partClass);
-        }
-
-        newTool.setItemMeta(newToolMeta);
-
-        ItemUtils.rebuildTinkerLore(newTool);
-        ItemUtils.rebuildTinkerName(newTool);
-
-        blockMenu.pushItem(newTool, OUTPUT_SLOT);
-        blockMenu.getItemInSlot(INPUT_ITEM).setAmount(blockMenu.getItemInSlot(INPUT_ITEM).getAmount() - 1);
-        blockMenu.getItemInSlot(INPUT_PART).setAmount(blockMenu.getItemInSlot(INPUT_PART).getAmount() - 1);
-    }
-
-    private void swapArmour(BlockMenu blockMenu,
-                            Player player,
-                            ItemStack item,
-                            String partClass,
-                            String partType,
-                            String partMaterial
-    ) {
-        // The part is a plate part but the type is either null or not matching the armour (Helm plates for boots etc..)
-        if (partClass.equals(Ids.PLATE) && (partType != null && !partType.equals(ItemUtils.getArmourTypeName(item)))) {
-            player.sendMessage(ThemeUtils.WARNING + "该盔甲板与防具类型不一致,无法替换");
-            return;
-        }
-
-        ItemStack newArmour = item.clone();
-        ItemMeta newArmourMeta = newArmour.getItemMeta();
-
-        switch (partClass) {
-            case Ids.PLATE:
-                PersistentDataAPI.setString(newArmourMeta, Keys.ARMOUR_INFO_PLATE_MATERIAL, partMaterial);
-                break;
-            case Ids.GAMBESON:
-                PersistentDataAPI.setString(newArmourMeta, Keys.ARMOUR_INFO_GAMBESON_MATERIAL, partMaterial);
-                break;
-            case Ids.LINKS:
-                PersistentDataAPI.setString(newArmourMeta, Keys.ARMOUR_INFO_LINKS_MATERIAL, partMaterial);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + partClass);
-        }
-
-        newArmour.setItemMeta(newArmourMeta);
-
-        ItemUtils.rebuildTinkerLore(newArmour);
-        ItemUtils.rebuildTinkerName(newArmour);
-
-        blockMenu.pushItem(newArmour, OUTPUT_SLOT);
-        blockMenu.getItemInSlot(INPUT_ITEM).setAmount(blockMenu.getItemInSlot(INPUT_ITEM).getAmount() - 1);
-        blockMenu.getItemInSlot(INPUT_PART).setAmount(blockMenu.getItemInSlot(INPUT_PART).getAmount() - 1);
-    }
-
-    private void checkAndChangeExplosiveness(ItemStack newTool, ItemMeta im, String partMaterial, String partClass) {
-        Preconditions.checkNotNull(Slimefun.instance(), "Slimefun is null, that's... not great?");
-        NamespacedKey sfIDKey = new NamespacedKey(Slimefun.instance(), "slimefun_item");
-        String sID = PersistentDataAPI.getString(im, sfIDKey);
-
-        if (isExplosivePart(partMaterial, partClass) && !ItemUtils.isToolExplosive(newTool)) {
-            // Part IS explosive but the tool is NOT - we need to make it explosive!
-            sID = sID + "_EXP";
-            PersistentDataAPI.setString(im, sfIDKey, sID);
-        } else if (!isExplosivePart(partMaterial, partClass) && ItemUtils.isToolExplosive(newTool)) {
-            // Part is NOT explosive but the tool IS - we need to make it explosive!
-            sID = sID.replace("_EXP", "");
-            PersistentDataAPI.setString(im, sfIDKey, sID);
-        }
-    }
-
-    @Override
-    protected void setup(BlockMenuPreset blockMenuPreset) {
-        blockMenuPreset.drawBackground(ChestMenuUtils.getBackground(), BACKGROUND_SLOTS);
-        blockMenuPreset.addItem(CRAFT_BUTTON, GUIItems.MENU_CRAFT_SWAP);
-        blockMenuPreset.addMenuClickHandler(CRAFT_BUTTON, (player, i, itemStack, clickAction) -> false);
-    }
-
-    @Override
-    protected int[] getInputSlots() {
-        return new int[0];
-    }
-
-    @Override
-    protected int[] getOutputSlots() {
-        return new int[0];
-    }
-
-    @Override
-    protected void onBreak(@Nonnull BlockBreakEvent event, @Nonnull BlockMenu blockMenu) {
-        super.onBreak(event, blockMenu);
-        Location location = blockMenu.getLocation();
-        blockMenu.dropItems(location, INPUT_ITEM);
-        blockMenu.dropItems(location, INPUT_PART);
-        blockMenu.dropItems(location, OUTPUT_SLOT);
-    }
-
-    @Override
-    protected void onNewInstance(@Nonnull BlockMenu blockMenu, @Nonnull Block b) {
-        super.onNewInstance(blockMenu, b);
-        blockMenu.addMenuClickHandler(CRAFT_BUTTON, (player, i, itemStack, clickAction) -> {
-            craft(blockMenu, player);
+        blockMenu.addItem(TinkersSmeltery.PURGE_BUTTON, GUIItems.MENU_PURGE);
+        blockMenu.addMenuClickHandler(TinkersSmeltery.PURGE_BUTTON, (player, i, itemStack, clickAction) -> {
+            clickPurge(clickAction);
             return false;
         });
+
+        blockMenu.addItem(TinkersSmeltery.ALLOY_BUTTON, GUIItems.MENU_ALLOY);
+        blockMenu.addMenuClickHandler(TinkersSmeltery.ALLOY_BUTTON, (player, i, itemStack, clickAction) -> {
+            clickAlloy();
+            return false;
+        });
+
+        blockMenu.addItem(TinkersSmeltery.POUR_BUTTON, GUIItems.MENU_POUR);
+        blockMenu.addMenuClickHandler(TinkersSmeltery.POUR_BUTTON, (player, i, itemStack, clickAction) -> {
+            clickPour(player);
+            return false;
+        });
+
     }
 
-    private boolean isExplosivePart(String material, String part) {
-        return (
-            (material.equals(Ids.REINFORCED_ALLOY) && part.equals(Ids.HEAD)) ||
-                (material.equals(Ids.HARDENED_METAL) && part.equals(Ids.ROD)) ||
-                (material.equals(Ids.INFINITY_SINGULARITY) && part.equals(Ids.HEAD)) ||
-                (material.equals(Ids.OSMIUM) && part.equals(Ids.HEAD))
-        );
+    public void input() {
+        ItemStack input = blockMenu.getItemInSlot(TinkersSmeltery.INPUT_SLOT);
+        if (input == null) { // Null, no item - moving on!
+            return;
+        }
+
+        // Inputting Lava into the tank
+        if (input.getType() == Material.LAVA_BUCKET) {
+            if (levelLava <= (LAVA_MAX - LAVA_PER_BUCKET) && blockMenu.fits(new ItemStack(Material.BUCKET), TinkersSmeltery.OUTPUT_SLOT)) {
+                input.setAmount(input.getAmount() - 1);
+                blockMenu.pushItem(new ItemStack(Material.BUCKET), TinkersSmeltery.OUTPUT_SLOT);
+                levelLava += LAVA_PER_BUCKET;
+            } else if (blockMenu.fits(new ItemStack(Material.LAVA_BUCKET), TinkersSmeltery.OUTPUT_SLOT)) {
+                input.setAmount(input.getAmount() - 1);
+                blockMenu.pushItem(new ItemStack(Material.LAVA_BUCKET), TinkersSmeltery.OUTPUT_SLOT);
+            }
+            return;
+        }
+
+        MoltenResult result = ItemUtils.getMoltenResult(input);
+
+        // Item doesn't melt OR not enough lava
+        if (result == null || !canMelt(input, result)) {
+            return;
+        }
+
+        if (canFit(result.getAmount())) {
+            addMetal(result);
+            input.setAmount(input.getAmount() - 1);
+            levelLava -= result.getAmount();
+        }
     }
 
+    private boolean canMelt(ItemStack itemStack, MoltenResult result) {
+        return ItemUtils.isMeltable(itemStack) && levelLava >= result.getAmount();
+    }
+
+    private boolean canFit(int incoming) {
+        return (getMetalLevel() + incoming) <= METALS_MAX;
+    }
+
+    private Integer getMetalLevel() {
+        return tankContent.values().stream().mapToInt(Integer::valueOf).sum();
+    }
+
+    public void process(boolean first) {
+        input();
+        updateView();
+        if (!first) {
+            syncBlock();
+        }
+    }
+
+    public void kill(Location location) {
+        drops(location);
+        BlockStorage.clearBlockInfo(location);
+    }
+
+    public void drops(Location location) {
+        blockMenu.dropItems(location, TinkersSmeltery.INPUT_SLOT);
+        blockMenu.dropItems(location, TinkersSmeltery.OUTPUT_SLOT);
+        blockMenu.dropItems(location, TinkersSmeltery.CAST_SLOT);
+        blockMenu.dropItems(location, TinkersSmeltery.CAST_STORE_SLOTS);
+    }
+
+    public void updateView() {
+        if (blockMenu.hasViewer()) {
+
+            int metalLevel = getMetalLevel();
+
+            int lavaPercent = (int) Math.ceil(((float) levelLava * 100) / LAVA_MAX);
+            int metalPercent = (int) Math.ceil(((float) metalLevel * 100) / METALS_MAX);
+
+            blockMenu.replaceExistingItem(TinkersSmeltery.LAVA_INFO, GUIItems.menuLavaInfo(lavaPercent, levelLava, LAVA_MAX));
+            blockMenu.addMenuClickHandler(TinkersSmeltery.LAVA_INFO, (player, i, itemStack, clickAction) -> false);
+
+            blockMenu.replaceExistingItem(TinkersSmeltery.METAL_INFO, GUIItems.menuMetalInfo(metalPercent, metalLevel, METALS_MAX, tankContent));
+            blockMenu.addMenuClickHandler(TinkersSmeltery.METAL_INFO, (player, i, itemStack, clickAction) -> {
+                clickMetalTank();
+                return false;
+            });
+        }
+    }
+
+    private void syncBlock() {
+        BlockStorage.addBlockInfo(blockMenu.getBlock(), LAVA_LEVEL_BS, String.valueOf(levelLava));
+        for (Map.Entry<String, Integer> e : tankContent.entrySet()) {
+            BlockStorage.addBlockInfo(blockMenu.getBlock(), METAL_LEVEL_PREFIX + e.getKey(), String.valueOf(e.getValue()));
+        }
+    }
+
+    private void addMetal(MoltenResult result) {
+        if (tankContent.containsKey(result.getComponentMaterial().getId())) {
+            tankContent.put(result.getComponentMaterial().getId(), tankContent.get(result.getComponentMaterial().getId()) + result.getAmount());
+        } else {
+            tankContent.put(result.getComponentMaterial().getId(), result.getAmount());
+        }
+    }
+
+    private void addMetal(String metalName, int amount) {
+        if (tankContent.containsKey(metalName)) {
+            tankContent.put(metalName, tankContent.get(metalName) + amount);
+        } else {
+            tankContent.put(metalName, amount);
+        }
+    }
+
+    private void removeMetal(String metalId, int amount) {
+        int volume = tankContent.get(metalId);
+        if (volume - amount <= 0) {
+            tankContent.remove(metalId);
+            BlockStorage.addBlockInfo(blockMenu.getLocation(), METAL_LEVEL_PREFIX + metalId, null);
+        } else {
+            tankContent.put(metalId, tankContent.get(metalId) - amount);
+        }
+    }
+
+    private void clickPurge(ClickAction clickAction) {
+
+        if (tankContent.isEmpty()) {
+            return;
+        }
+
+        if (clickAction.isRightClicked()) {
+            tankContent.clear();
+            Config c = BlockStorage.getLocationInfo(blockMenu.getLocation());
+            List<String> keys = new ArrayList<>();
+            for (String key : c.getKeys()) {
+                if (key.startsWith(TinkersSmelteryCache.METAL_LEVEL_PREFIX)) {
+                    keys.add(key);
+                }
+            }
+            for (String key : keys) {
+                BlockStorage.addBlockInfo(blockMenu.getLocation(), key, null);
+            }
+            return;
+        }
+
+        Optional<String> first = tankContent.keySet().stream().findFirst();
+        if (first.isPresent()) {
+            String key = first.get();
+            tankContent.remove(key);
+            BlockStorage.addBlockInfo(blockMenu.getLocation(), METAL_LEVEL_PREFIX + key, null);
+        }
+    }
+
+    private void clickAlloy() {
+        for (Alloy alloy : TinkerMaterialManager.getAlloys()) {
+            if (!alloy.getAlloyMap().keySet().equals(tankContent.keySet())) {
+                continue;
+            }
+            int maxPossible = 0;
+            for (Map.Entry<String, Integer> entry : alloy.getAlloyMap().entrySet()) {
+                int tankAmount = tankContent.get(entry.getKey());
+                int requiredAmount = entry.getValue();
+                if (tankAmount < requiredAmount) {
+                    return;
+                }
+                int possible = Math.floorDiv(tankAmount, requiredAmount);
+                if (maxPossible == 0 || maxPossible > possible) {
+                    maxPossible = possible;
+                }
+            }
+            for (Map.Entry<String, Integer> entry : alloy.getAlloyMap().entrySet()) {
+                removeMetal(entry.getKey(), entry.getValue() * maxPossible);
+            }
+            addMetal(alloy.getParent().getId(), maxPossible);
+        }
+    }
+
+    private void clickPour(Player player) {
+
+        ItemStack inputItem = blockMenu.getItemInSlot(TinkersSmeltery.CAST_SLOT);
+
+        // Cast item is null or not a cast
+        if (inputItem == null || !SlimeTinker.getInstance().getCmManager().castingRecipes.containsKey(StackUtils.getIdOrType(inputItem))) {
+            player.sendMessage(ThemeUtils.WARNING + "澆鑄前請在模具/模具原型欄放入模具或模具原型");
+            return;
+        }
+
+        Optional<String> first = tankContent.keySet().stream().findFirst();
+
+        // No metals in the tank - cant pour
+        if (!first.isPresent()) {
+            player.sendMessage(ThemeUtils.WARNING + "沒有任何可供澆鑄的金屬");
+            return;
+        }
+
+        String metalID = first.get();
+        TinkerMaterial tinkerMaterial = TinkerMaterialManager.getById(metalID);
+        CastResult result = SlimeTinker.getInstance().getCmManager().castingRecipes.get(StackUtils.getIdOrType(inputItem));
+
+        // Cast valid, but this cast and metal combination doesn't work
+        if (!result.getOutputs().containsKey(tinkerMaterial)) {
+            player.sendMessage(ThemeUtils.WARNING + "該金屬無法用於此模具的澆鑄");
+            return;
+        }
+
+        ItemStack outputItem = result.getOutputs().get(tinkerMaterial).clone();
+        int metalAmount = result.getAmount();
+
+        // Does not have enough metal to cats this specific item
+        if (tankContent.get(metalID) < metalAmount) {
+            player.sendMessage(ThemeUtils.WARNING + "沒有足夠的金屬填充模具");
+            return;
+        }
+
+        // Lastly, can we fit the output?
+        if (!blockMenu.fits(outputItem, TinkersSmeltery.OUTPUT_SLOT)) {
+            player.sendMessage(ThemeUtils.WARNING + "輸出欄已滿");
+            return;
+        }
+
+        // Finally, let's actually pour
+        removeMetal(metalID, result.getAmount());
+        blockMenu.pushItem(outputItem, TinkersSmeltery.OUTPUT_SLOT);
+        if (result.isInputBurns()) {
+            inputItem.setAmount(inputItem.getAmount() - 1);
+        }
+    }
+
+    private void clickMetalTank() {
+        // 0 or 1 metals, wont do anything
+        Optional<String> first = tankContent.keySet().stream().findFirst();
+        if (first.isPresent() && tankContent.size() > 1) {
+            String string = first.get();
+            int amount = tankContent.get(string);
+            tankContent.remove(string);
+            tankContent.put(string, amount);
+        }
+    }
+
+    public Map<String, Integer> getTankContent() {
+        return tankContent;
+    }
+
+    public int getLevelLava() {
+        return levelLava;
+    }
+
+    public void setLevelLava(int levelLava) {
+        this.levelLava = levelLava;
+    }
 }
