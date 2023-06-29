@@ -13,8 +13,8 @@ public final class DummyModificationStation {
         "DUMMY_MODIFICATION_STATION",
         Material.GRINDSTONE,
         ThemeItemType.MACHINE,
-        "匠魂模组工作站",
-        "在匠魂模组工作站中给匠魂装备安装模组"
+        "匠魂模組工作站",
+        "在匠魂模組工作站中給匠魂裝備安裝模組"
     );
     public static final RecipeType TYPE = new RecipeType(Keys.WS_DUMMY_TOOL_TABLE, STACK);
 
