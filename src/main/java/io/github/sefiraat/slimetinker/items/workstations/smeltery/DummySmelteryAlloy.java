@@ -13,9 +13,9 @@ public final class DummySmelteryAlloy {
         "DUMMY_TINKERS_SMELTERY_ALLOY",
         Material.CHISELED_POLISHED_BLACKSTONE,
         ThemeItemType.MACHINE,
-        "匠魂冶炼炉",
-        "在匠魂冶炼炉中放入正确类型的金属",
-        "然后点击\"冶炼合金\"获得熔融合金"
+        "匠魂冶煉爐",
+        "在匠魂冶煉爐中放入正確類型的金屬",
+        "然後點擊\"冶煉合金\"獲得熔融合金"
     );
     public static final RecipeType TYPE = new RecipeType(Keys.WS_DUMMY_SMELTERY_A, STACK);
 
