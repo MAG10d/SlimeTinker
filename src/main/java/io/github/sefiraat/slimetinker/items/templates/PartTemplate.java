@@ -33,10 +33,10 @@ public class PartTemplate extends UnplaceableBlock {
     public List<String> getLore(String material, ChatColor color) {
         List<String> list = new ArrayList<>();
         list.add("");
-        list.add(ThemeUtils.PASSIVE + "一个部件,本身没有任何作用");
-        list.add(ThemeUtils.PASSIVE + "但可以在匠魂组装台组装成匠魂装备");
+        list.add(ThemeUtils.PASSIVE + "一個部件,本身沒有任何作用");
+        list.add(ThemeUtils.PASSIVE + "但可以在匠魂組裝台組裝成匠魂裝備");
         list.add("");
-        list.add(ThemeUtils.CLICK_INFO + "材质: " + color + LangUtils.getMaterialName(material));
+        list.add(ThemeUtils.CLICK_INFO + "材質: " + color + LangUtils.getMaterialName(material));
         return list;
     }
 
