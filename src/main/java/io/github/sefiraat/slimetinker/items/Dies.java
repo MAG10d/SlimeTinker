@@ -17,61 +17,61 @@ public final class Dies {
         throw new UnsupportedOperationException("Utility Class");
     }
 
-    public static final String DIE_DESC = "用于制作模具";
+    public static final String DIE_DESC = "用於製作模具";
     public static final SlimefunItemStack DIE_SHOVEL_HEAD = ThemeUtils.themedItemStack(
         "DIE_SHOVEL_HEAD",
         SkullTextures.PART_SHOVEL_HEAD,
         ThemeItemType.CAST,
-        "模具原型: 石制铲子头",
+        "模具原型: 石製鏟子頭",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_PICKAXE_HEAD = ThemeUtils.themedItemStack(
         "DIE_PICKAXE_HEAD",
         SkullTextures.PART_PICKAXE_HEAD,
         ThemeItemType.CAST,
-        "模具原型: 石制镐子头",
+        "模具原型: 石製鎬子頭",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_AXE_HEAD = ThemeUtils.themedItemStack(
         "DIE_AXE_HEAD",
         SkullTextures.PART_AXE_HEAD,
         ThemeItemType.CAST,
-        "模具原型: 石制斧头",
+        "模具原型: 石製斧頭",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_HOE_HEAD = ThemeUtils.themedItemStack(
         "DIE_HOE_HEAD",
         SkullTextures.PART_HOE_HEAD,
         ThemeItemType.CAST,
-        "模具原型: 石制锄头",
+        "模具原型: 石製鋤頭",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_SWORD_BLADE = ThemeUtils.themedItemStack(
         "DIE_SWORD_BLADE",
         SkullTextures.PART_SWORD_BLADE,
         ThemeItemType.CAST,
-        "模具原型: 石制剑身",
+        "模具原型: 石製劍身",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_TOOL_ROD = ThemeUtils.themedItemStack(
         "DIE_TOOL_ROD",
         SkullTextures.PART_TOOL_ROD,
         ThemeItemType.CAST,
-        "模具原型: 手柄",
+        "模具原型: 手把",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_HELM_PLATE = ThemeUtils.themedItemStack(
         "DIE_HELM_PLATE",
         SkullTextures.PART_HELM_PLATES,
         ThemeItemType.CAST,
-        "模具原型: 石制头盔板",
+        "模具原型: 石製頭盔板",
         ThemeUtils.PASSIVE + DIE_DESC
     );
     public static final SlimefunItemStack DIE_CHEST_PLATE = ThemeUtils.themedItemStack(
         "DIE_CHEST_PLATE",
         SkullTextures.PART_CHEST_PLATES,
         ThemeItemType.CAST,
-        "模具原型: 石制胸甲板",
+        "模具原型: 石製胸甲板",
         ThemeUtils.PASSIVE + DIE_DESC
     );
 
@@ -79,7 +79,7 @@ public final class Dies {
         "DIE_LEG_PLATE",
         SkullTextures.PART_LEG_PLATES,
         ThemeItemType.CAST,
-        "模具原型: 石制护腿板",
+        "模具原型: 石製護腿板",
         ThemeUtils.PASSIVE + DIE_DESC
     );
 
@@ -87,7 +87,7 @@ public final class Dies {
         "DIE_BOOT_PLATE",
         SkullTextures.PART_BOOTS_PLATES,
         ThemeItemType.CAST,
-        "模具原型: 石制靴子板",
+        "模具原型: 石製靴子板",
         ThemeUtils.PASSIVE + DIE_DESC
     );
 
@@ -103,7 +103,7 @@ public final class Dies {
         "DIE_REPAIR_KIT",
         Material.MINECART,
         ThemeItemType.CAST,
-        "模具原型: 修复工具",
+        "模具原型: 修復工具",
         ThemeUtils.PASSIVE + DIE_DESC
     );
 
