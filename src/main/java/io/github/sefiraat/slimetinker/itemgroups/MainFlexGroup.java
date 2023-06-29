@@ -25,8 +25,8 @@ public class MainFlexGroup extends FlexItemGroup {
 
     private static final ItemStack DOCS_ITEM_STACK = new CustomItemStack(
         Material.BOOK,
-        ThemeUtils.GUIDE + "附属 Wiki",
-        ThemeUtils.PASSIVE + "点击获取粘液匠魂 Wiki 链接",
+        ThemeUtils.GUIDE + "附屬 Wiki",
+        ThemeUtils.PASSIVE + "點擊獲取黏液匠魂 Wiki 連結",
         "",
         ThemeUtils.CLICK_INFO + "指南"
     );
@@ -65,7 +65,7 @@ public class MainFlexGroup extends FlexItemGroup {
     @Override
     @ParametersAreNonnullByDefault
     public void open(Player p, PlayerProfile profile, SlimefunGuideMode mode) {
-        final ChestMenu chestMenu = new ChestMenu(ThemeUtils.MAIN + "粘液匠魂");
+        final ChestMenu chestMenu = new ChestMenu(ThemeUtils.MAIN + "黏液匠魂");
 
         for (int slot : HEADER) {
             chestMenu.addItem(slot, ChestMenuUtils.getBackground(), (player1, i1, itemStack, clickAction) -> false);
@@ -107,7 +107,7 @@ public class MainFlexGroup extends FlexItemGroup {
         // Docs
         menu.replaceExistingItem(DOCS, DOCS_ITEM_STACK);
         menu.addMenuClickHandler(DOCS, (player1, i1, itemStack1, clickAction) -> {
-            final TextComponent link = new TextComponent("点击此处前往Wiki");
+            final TextComponent link = new TextComponent("點擊此處前往Wiki");
             link.setColor(ChatColor.YELLOW);
             link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://slimefun-addons-wiki.guizhanss.cn/slime-tinker/"));
             player.spigot().sendMessage(link);
