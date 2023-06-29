@@ -42,12 +42,12 @@ public class ModificationStation extends MenuBlock {
 
         // No item dummy!
         if (item == null) {
-            player.sendMessage(ThemeUtils.WARNING + "在第一格放置匠魂装备");
+            player.sendMessage(ThemeUtils.WARNING + "在第一格放置匠魂裝備");
             return;
         }
 
         if (item.getAmount() > 1) {
-            player.sendMessage(ThemeUtils.WARNING + "匠魂装备不能堆叠");
+            player.sendMessage(ThemeUtils.WARNING + "匠魂裝備不能堆疊");
             return;
         }
 
@@ -57,14 +57,14 @@ public class ModificationStation extends MenuBlock {
         } else if (ItemUtils.isArmour(item)) {
             modArmour(blockMenu, player, item, modItem);
         } else {
-            player.sendMessage(ThemeUtils.WARNING + "第一格内的物品不是匠魂装备");
+            player.sendMessage(ThemeUtils.WARNING + "第一格內的物品不是匠魂裝備");
         }
     }
 
     private void modTool(BlockMenu blockMenu, Player player, ItemStack item, ItemStack modItem) {
         // No modifier!
         if (modItem == null || !Modifications.getModificationListTool().contains(StackUtils.getIdOrType(modItem))) {
-            player.sendMessage(ThemeUtils.WARNING + "需要在第二格内放入有效的模组物品");
+            player.sendMessage(ThemeUtils.WARNING + "需要在第二格內放入有效的模組物品");
             return;
         }
 
@@ -80,7 +80,7 @@ public class ModificationStation extends MenuBlock {
         int currentLevel = Modifications.getModLevel(mod, item); // The current level of this mod (or 0)
 
         if (!mod.getRequirementMap().containsKey(currentLevel + 1)) { // Max level
-            player.sendMessage(ThemeUtils.WARNING + "模组已到最大等级");
+            player.sendMessage(ThemeUtils.WARNING + "模組已到最大等級");
             return;
         }
 
@@ -89,7 +89,7 @@ public class ModificationStation extends MenuBlock {
 
         if (currentAmount <= 0) {
             if (modSlots == 0) { // New mod and no slots
-                player.sendMessage(ThemeUtils.WARNING + "该匠魂装备没有剩余的模组栏位");
+                player.sendMessage(ThemeUtils.WARNING + "該匠魂裝備沒有剩餘的模組欄位");
                 return;
             } else { // Remove mod slot
                 ItemUtils.setTinkerModifierSlots(c, modSlots - 1);
@@ -111,7 +111,7 @@ public class ModificationStation extends MenuBlock {
         ItemStack newTool = item.clone();
 
         if (!blockMenu.fits(newTool, OUTPUT_SLOT)) {
-            player.sendMessage(ThemeUtils.WARNING + "输出栏已满");
+            player.sendMessage(ThemeUtils.WARNING + "輸出欄已滿");
             return;
         }
 
@@ -124,7 +124,7 @@ public class ModificationStation extends MenuBlock {
     private void modArmour(BlockMenu blockMenu, Player player, ItemStack item, ItemStack modItem) {
         // No modifier!
         if (modItem == null || !Modifications.getModificationListArmour().contains(StackUtils.getIdOrType(modItem))) {
-            player.sendMessage(ThemeUtils.WARNING + "需要在第二格内放入有效的模组物品");
+            player.sendMessage(ThemeUtils.WARNING + "需要在第二格內放入有效的模組物品");
             return;
         }
 
@@ -140,7 +140,7 @@ public class ModificationStation extends MenuBlock {
         int currentLevel = Modifications.getModLevel(mod, item); // The current level of this mod (or 0)
 
         if (!mod.getRequirementMap().containsKey(currentLevel + 1)) { // Max level
-            player.sendMessage(ThemeUtils.WARNING + "模组已到最大等级");
+            player.sendMessage(ThemeUtils.WARNING + "模組已到最大等級");
             return;
         }
 
@@ -149,7 +149,7 @@ public class ModificationStation extends MenuBlock {
 
         if (currentAmount <= 0) {
             if (modSlots == 0) { // New mod and no slots
-                player.sendMessage(ThemeUtils.WARNING + "该匠魂装备没有剩余的模组栏位");
+                player.sendMessage(ThemeUtils.WARNING + "該匠魂裝備沒有剩餘的模組欄位");
                 return;
             } else { // Remove mod slot
                 ItemUtils.setTinkerModifierSlots(c, modSlots - 1);
@@ -171,7 +171,7 @@ public class ModificationStation extends MenuBlock {
         ItemStack newArmour = item.clone();
 
         if (!blockMenu.fits(newArmour, OUTPUT_SLOT)) {
-            player.sendMessage(ThemeUtils.WARNING + "输出栏已满");
+            player.sendMessage(ThemeUtils.WARNING + "輸出欄已滿");
             return;
         }
 
