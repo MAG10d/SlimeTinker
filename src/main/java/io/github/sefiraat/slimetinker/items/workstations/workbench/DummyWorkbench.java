@@ -14,7 +14,7 @@ public final class DummyWorkbench {
         Material.FLETCHING_TABLE,
         ThemeItemType.MACHINE,
         "匠魂合成站",
-        "该物品在匠魂合成站中制作"
+        "該物品在匠魂合成站中製作"
     );
     public static final RecipeType TYPE = new RecipeType(Keys.WS_DUMMY_WORKBENCH, STACK);
 
