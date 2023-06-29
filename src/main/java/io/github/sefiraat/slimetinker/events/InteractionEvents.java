@@ -78,15 +78,15 @@ public final class InteractionEvents {
             if (p.isSneaking()) {
                 // Setting location
                 PersistentDataAPI.setString(im, keyLoc, GeneralUtils.serializeLocation(p.getLocation()));
-                p.sendMessage(ThemeUtils.SUCCESS + "已设置位置!");
+                p.sendMessage(ThemeUtils.SUCCESS + "已設置位置!");
                 i.setItemMeta(im);
             } else {
                 // Actioning location
                 if (ItemUtils.onCooldown(i, cooldownName)) {
-                    p.sendMessage(ThemeUtils.WARNING + "召回技能冷却中");
+                    p.sendMessage(ThemeUtils.WARNING + "召回技能冷卻中");
                     return;
                 } else if (!PersistentDataAPI.hasString(im, keyLoc)) {
-                    p.sendMessage(ThemeUtils.WARNING + "你还没有设置召回的位置");
+                    p.sendMessage(ThemeUtils.WARNING + "你還沒有設置召回的位置");
                     return;
                 }
                 String sl = PersistentDataAPI.getString(im, keyLoc);
@@ -120,7 +120,7 @@ public final class InteractionEvents {
                 p.getWorld().playEffect(friend.getPlayer().getLocation(), Effect.ENDEREYE_LAUNCH, 10);
                 ItemUtils.setCooldown(i, "NOCLIP", 300000);
             } else {
-                p.sendMessage(ThemeUtils.WARNING + "无法传送，请稍后再试");
+                p.sendMessage(ThemeUtils.WARNING + "無法傳送，請稍後再試");
             }
         }
     }
@@ -153,7 +153,7 @@ public final class InteractionEvents {
         ItemStack i = friend.getActiveStack();
         int cdMinutes = 2;
         if (ItemUtils.onCooldown(i, cdName)) {
-            p.sendMessage(ThemeUtils.WARNING + "自然法则技能冷却中");
+            p.sendMessage(ThemeUtils.WARNING + "自然法則技能冷卻中");
         } else {
             List<Animals> animals = EntityUtils.getNearbyEntitiesByType(Animals.class, p, 3, 3, 3);
             if (animals.size() >= 2) {
@@ -183,7 +183,7 @@ public final class InteractionEvents {
                 task.runTaskTimer(SlimeTinker.getInstance(), 0, 20);
                 ItemUtils.setCooldown(i, cdName, 20 * 60000L);
             } else {
-                p.sendMessage(ThemeUtils.WARNING + "王牌特工技能冷却中");
+                p.sendMessage(ThemeUtils.WARNING + "王牌特工技能冷卻中");
             }
         }
     }
@@ -259,7 +259,7 @@ public final class InteractionEvents {
                 ItemUtils.setCooldown(tool, "celebrate", 3600000);
             }
         } else {
-            player.sendMessage(ThemeUtils.WARNING + "庆祝技能冷却中");
+            player.sendMessage(ThemeUtils.WARNING + "慶祝技能冷卻中");
         }
     }
 
@@ -286,7 +286,7 @@ public final class InteractionEvents {
             ) {
                 NetworkRemote.setGrid(friend.getActiveStack(), block, player);
             } else {
-                player.sendMessage(Theme.ERROR + "必须连接一个网格 (不能是带合成的).");
+                player.sendMessage(Theme.ERROR + "必須連接一個網格 (不能是帶合成的).");
             }
         } else if (friend.getAction() == Action.LEFT_CLICK_AIR) {
             NetworkRemote.tryOpenGrid(friend.getActiveStack(), player, -1);
