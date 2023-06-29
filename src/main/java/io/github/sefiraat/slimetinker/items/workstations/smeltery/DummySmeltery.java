@@ -13,10 +13,10 @@ public final class DummySmeltery {
         "DUMMY_TINKERS_SMELTERY",
         Material.CHISELED_POLISHED_BLACKSTONE,
         ThemeItemType.MACHINE,
-        "匠魂冶炼炉",
-        "这个物品是在匠魂冶炼炉中",
+        "匠魂冶煉爐",
+        "這個物品是在匠魂冶煉爐中",
         "使用特定的模具",
-        "浇铸相应的熔融金属/液体获得"
+        "澆鑄相應的熔融金屬/液體獲得"
     );
     public static final RecipeType TYPE = new RecipeType(Keys.WS_DUMMY_SMELTERY, STACK);
 
