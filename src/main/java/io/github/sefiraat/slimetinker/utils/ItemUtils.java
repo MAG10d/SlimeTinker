@@ -161,9 +161,9 @@ public final class ItemUtils {
 
         // General Material information
         lore.add(ThemeUtils.getLine());
-        lore.add(ThemeUtils.CLICK_INFO + "头部: " + formatMaterialName(matHead));
-        lore.add(ThemeUtils.CLICK_INFO + "绑定结: " + formatMaterialName(matBind));
-        lore.add(ThemeUtils.CLICK_INFO + "手柄: " + formatMaterialName(matRod));
+        lore.add(ThemeUtils.CLICK_INFO + "頭部: " + formatMaterialName(matHead));
+        lore.add(ThemeUtils.CLICK_INFO + "綁定結: " + formatMaterialName(matBind));
+        lore.add(ThemeUtils.CLICK_INFO + "手把: " + formatMaterialName(matRod));
         lore.add(ThemeUtils.getLine());
 
         // Material properties
@@ -186,9 +186,9 @@ public final class ItemUtils {
             Mod mod = Modifications.getModificationDefinitionsTool().get(entry.getKey());
             if (mod.getRequirementMap().containsKey(level + 1)) {
                 String amountRequired = String.valueOf(mod.getRequirementMap().get(level + 1));
-                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等级 " + entry.getValue() + ThemeUtils.PASSIVE + " - (" + mapAmounts.get(entry.getKey()) + "/" + amountRequired + ")");
+                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等級 " + entry.getValue() + ThemeUtils.PASSIVE + " - (" + mapAmounts.get(entry.getKey()) + "/" + amountRequired + ")");
             } else {
-                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等级 " + entry.getValue() + ThemeUtils.PASSIVE + " - (最高)");
+                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等級 " + entry.getValue() + ThemeUtils.PASSIVE + " - (最高)");
             }
         }
         if (!mapLevels.isEmpty()) {
@@ -212,7 +212,7 @@ public final class ItemUtils {
         // General Material information
         lore.add(ThemeUtils.getLine());
         lore.add(ThemeUtils.CLICK_INFO + "板: " + formatMaterialName(matPlate));
-        lore.add(ThemeUtils.CLICK_INFO + "护身软甲: " + formatMaterialName(matGambeson));
+        lore.add(ThemeUtils.CLICK_INFO + "護身軟甲: " + formatMaterialName(matGambeson));
         lore.add(ThemeUtils.CLICK_INFO + "盔甲接合物: " + formatMaterialName(matLinks));
         lore.add(ThemeUtils.getLine());
 
@@ -236,9 +236,9 @@ public final class ItemUtils {
             Mod mod = Modifications.getModificationDefinitionsArmour().get(entry.getKey());
             if (mod.getRequirementMap().containsKey(level + 1)) {
                 String amountRequired = String.valueOf(mod.getRequirementMap().get(level + 1));
-                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等级 " + entry.getValue() + ThemeUtils.PASSIVE + " - (" + mapAmounts.get(entry.getKey()) + "/" + amountRequired + ")");
+                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等級 " + entry.getValue() + ThemeUtils.PASSIVE + " - (" + mapAmounts.get(entry.getKey()) + "/" + amountRequired + ")");
             } else {
-                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等级 " + entry.getValue() + ThemeUtils.PASSIVE + " - (最高)");
+                lore.add(ThemeUtils.CLICK_INFO + LangUtils.getMaterialName(entry.getKey()) + " 等級 " + entry.getValue() + ThemeUtils.PASSIVE + " - (最高)");
             }
         }
         if (!mapLevels.isEmpty()) {
@@ -654,14 +654,14 @@ public final class ItemUtils {
 
     @Nonnull
     public static String getLoreExp(PersistentDataContainer c) {
-        return ThemeUtils.ITEM_TOOL + "等级: " +
+        return ThemeUtils.ITEM_TOOL + "等級: " +
             ChatColor.WHITE + getTinkerLevel(c) +
             ThemeUtils.PASSIVE + " (" + getTinkerExp(c) + " / " + getTinkerRequiredExp(c) + ")";
     }
 
     @Nonnull
     public static String getLoreModSlots(PersistentDataContainer c) {
-        return ThemeUtils.ITEM_TOOL + "模组栏位: " +
+        return ThemeUtils.ITEM_TOOL + "模組欄位: " +
             ChatColor.WHITE + getTinkerModifierSlots(c);
     }
 
