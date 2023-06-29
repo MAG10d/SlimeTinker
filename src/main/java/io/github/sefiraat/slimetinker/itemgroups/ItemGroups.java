@@ -19,7 +19,7 @@ public final class ItemGroups {
 
     public static final MainFlexGroup MAIN = new MainFlexGroup(Keys.ITEM_GROUP_MAIN, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_MAIN)),
-        ThemeUtils.MAIN + "粘液匠魂"
+        ThemeUtils.MAIN + "黏液匠魂"
     ));
     public static final DummyItemGroup WORKSTATIONS = new DummyItemGroup(Keys.ITEM_GROUP_WORKSTATIONS, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_MAIN)),
@@ -31,7 +31,7 @@ public final class ItemGroups {
     ));
     public static final DummyItemGroup MOLTEN_METALS = new DummyItemGroup(Keys.ITEM_GROUP_MOLTEN, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_MOLTEN)),
-        ThemeUtils.MAIN + "熔融金属"
+        ThemeUtils.MAIN + "熔融金屬"
     ));
     public static final DummyItemGroup ALLOYS = new DummyItemGroup(Keys.ITEM_GROUP_ALLOYS, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_ALLOYS)),
@@ -39,19 +39,19 @@ public final class ItemGroups {
     ));
     public static final DummyItemGroup CASTS = new DummyItemGroup(Keys.ITEM_GROUP_CASTS, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_CASTS)),
-        ThemeUtils.MAIN + "铸件"
+        ThemeUtils.MAIN + "鑄件"
     ));
     public static final DummyItemGroup PARTS = new DummyItemGroup(Keys.ITEM_GROUP_PARTS, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_PARTS)),
-        ThemeUtils.MAIN + "部件制作指南"
+        ThemeUtils.MAIN + "部件製作指南"
     ));
     public static final DummyItemGroup TOOLS = new DummyItemGroup(Keys.ITEM_GROUP_TOOLS, new CustomItemStack(
         Material.DIAMOND_SWORD,
-        ThemeUtils.MAIN + "工具制作指南"
+        ThemeUtils.MAIN + "工具製作指南"
     ));
     public static final DummyItemGroup ARMOUR = new DummyItemGroup(Keys.ITEM_GROUP_ARMOUR, new CustomItemStack(
         Material.DIAMOND_CHESTPLATE,
-        ThemeUtils.MAIN + "防具制作指南"
+        ThemeUtils.MAIN + "防具製作指南"
     ));
     public static final DummyItemGroup TRAITS = new DummyItemGroup(Keys.ITEM_GROUP_PROPERTIES, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.CAT_TRAITS)),
@@ -59,7 +59,7 @@ public final class ItemGroups {
     ));
     public static final DummyItemGroup MODIFICATIONS = new DummyItemGroup(Keys.ITEM_GROUP_MODIFICATIONS, new CustomItemStack(
         Material.REDSTONE,
-        ThemeUtils.MAIN + "模组"
+        ThemeUtils.MAIN + "模組"
     ));
     public static final DummyItemGroup PART_DICT = new DummyItemGroup(Keys.ITEM_GROUP_PART_DICT, new CustomItemStack(
         PlayerHead.getItemStack(PlayerSkin.fromBase64(SkullTextures.PART_PICKAXE_HEAD)),
